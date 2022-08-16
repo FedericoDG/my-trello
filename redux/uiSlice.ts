@@ -12,13 +12,13 @@ export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    sidebarToggle: (state) => ({
+    toggleSidebar: (state) => ({
       ...state,
       sidebarOpen: !state.sidebarOpen,
     }),
   },
 })
 
-export const {sidebarToggle} = uiSlice.actions
+export const {toggleSidebar} = uiSlice.actions
 
 export default uiSlice.reducer
