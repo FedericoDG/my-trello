@@ -1,3 +1,6 @@
 export {default as Navbar} from './Navbar'
+export {default as NewTask} from './NewTask'
 export {default as Sidebar} from './Sidebar'
+export {default as TaskContainer} from './TaskContainer'
+export {default as TaskItem} from './TaskItem'
 export * from './index'

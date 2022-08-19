@@ -1,9 +1,11 @@
+import {Link} from '@mui/material'
+import {useDispatch} from 'react-redux'
 import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import {useDispatch} from 'react-redux'
+import NextLink from 'next/link'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
 
 import {toggleSidebar} from '../../redux/uiSlice'
 
@@ -18,7 +20,11 @@ const Navbar = () => {
         <IconButton edge="start" size="large" onClick={toggle}>
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6">MyTrello</Typography>
+        <NextLink passHref href="/">
+          <Link color="white" underline="none">
+            <Typography variant="h6">MyTrello</Typography>
+          </Link>
+        </NextLink>
       </Toolbar>
     </AppBar>
   )
