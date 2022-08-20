@@ -45,27 +45,27 @@ const NewTask = () => {
             helperText={inputValue.length <= 0 && touched && 'Ingrese una descripción'}
             label="Escribe aquí"
             placeholder="Nueva tarea"
-            sx={{marginTop: 2, marginBottom: 1}}
+            sx={{marginTop: 2, marginBottom: 1, color: 'inherit'}}
             value={inputValue}
             onBlur={() => setTouched(true)}
             onChange={handleChange}
           />
           <Box display="flex" justifyContent="space-between">
-            <Button color="error" endIcon={<CancelIcon />} variant="text" onClick={handleCancel}>
+            <Button
+              color="error"
+              /* endIcon={<CancelIcon />}  */ variant="text"
+              onClick={handleCancel}
+            >
               Cancelar
             </Button>
-            <Button
-              color="primary"
-              endIcon={<SaveIcon />}
-              variant="outlined"
-              onClick={handleSubmit}
-            >
+            <Button endIcon={<SaveIcon />} variant="outlined" onClick={handleSubmit}>
               Guardar
             </Button>
           </Box>
         </>
       ) : (
         <Button
+          color="inherit"
           fullWidth
           startIcon={<AddCircleIcon />}
           variant="outlined"

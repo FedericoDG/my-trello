@@ -1,4 +1,4 @@
-import {FC, useState, useEffect, DragEvent} from 'react'
+import {FC, DragEvent} from 'react'
 import {List, Paper} from '@mui/material'
 import {useSelector, useDispatch} from 'react-redux'
 
@@ -12,20 +12,15 @@ import style from './TaskContainer.module.css'
 
 interface Props {
   status: TaskStatus
+  px?: string
 }
 
-const TaskContainer: FC<Props> = ({status}) => {
-  /* const [hydrated, setHydrated] = useState(false) */
-
+const TaskContainer: FC<Props> = ({status, px = '250px'}) => {
   const dispatch = useDispatch<AppDispatch>()
   const {tasks} = useSelector((state: RootState) => state.tasks)
   const {draggingTask} = useSelector((state: RootState) => state.ui)
 
   const taskByStatus = tasks.filter((task) => task.status === status)
-
-  /* useEffect(() => {
-    setHydrated(true)
-  }, []) */
 
   const onDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault()
@@ -40,13 +35,11 @@ const TaskContainer: FC<Props> = ({status}) => {
     e.preventDefault()
   }
 
-  /* if (!hydrated) return null */
-
   return (
     <div className={draggingTask ? style.dragging : ''} onDragOver={allowDrop} onDrop={onDrop}>
       <Paper
         sx={{
-          height: 'calc(100vh - 250px)',
+          height: `calc(100vh - ${px})`,
           overflowY: 'auto',
           backgroundColor: 'transparent',
           paddingX: 1,

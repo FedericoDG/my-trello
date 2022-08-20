@@ -1,4 +1,12 @@
-import {Card, CardActionArea, CardActions, CardContent, IconButton, Typography} from '@mui/material'
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  IconButton,
+  Typography,
+  Box,
+} from '@mui/material'
 import {DragEvent, FC, MouseEvent} from 'react'
 import {useDispatch} from 'react-redux'
 import {useRouter} from 'next/router'
@@ -43,19 +51,23 @@ const TaskItem: FC<Props> = ({task}) => {
         onDragEnd={onDragEnd}
         onDragStart={onDragStart}
       >
-        <IconButton
-          aria-label="delete"
-          size="small"
-          sx={{position: 'absolute', right: 0, zIndex: 9}}
-          onClick={(e) => handleDelete(e, task._id)}
-        >
-          <HighlightOffIcon color="error" fontSize="inherit" />
-        </IconButton>
+        <Box display={{xs: 'block', sm: 'block', md: 'none'}}>
+          <IconButton
+            aria-label="delete"
+            size="small"
+            sx={{position: 'absolute', right: 0, zIndex: 9}}
+            onClick={(e) => handleDelete(e, task._id)}
+          >
+            <HighlightOffIcon color="error" fontSize="inherit" />
+          </IconButton>
+        </Box>
         <CardActionArea>
           <CardContent sx={{marginTop: 1}}>
             <Typography sx={{whiteSpace: 'pre-line'}}>{task.description}</Typography>
             <CardActions sx={{display: 'flex', justifyContent: 'end'}}>
-              <Typography variant="body2">{getFormatDistanceToNow(task.createdAt)}</Typography>
+              <Typography variant="caption" sx={{opacity: 0.5}}>
+                {getFormatDistanceToNow(task.createdAt)}
+              </Typography>
             </CardActions>
           </CardContent>
         </CardActionArea>

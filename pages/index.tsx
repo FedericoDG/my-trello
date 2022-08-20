@@ -1,4 +1,4 @@
-import {Card, Grid, CardHeader} from '@mui/material'
+import {Card, Grid, CardHeader, Box, Stack} from '@mui/material'
 import {useDispatch} from 'react-redux'
 import {useEffect} from 'react'
 import type {NextPage} from 'next'
@@ -8,6 +8,8 @@ import {Layout} from '../components/layouts'
 import {loadTasks} from '../redux/tasksSlice'
 import NewTask from '../components/ui/NewTask'
 import TaskContainer from '../components/ui/TaskContainer'
+import {Pomodoro} from '../components/pomodoro'
+import Trash from '../components/ui/Trash'
 
 const HomePage: NextPage = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -19,24 +21,39 @@ const HomePage: NextPage = () => {
   return (
     <Layout title="My Trello">
       <Grid container spacing={2}>
-        <Grid item sm={3} xs={12}>
+        <Grid item md={3} sm={6} xs={12}>
           <Card sx={{height: 'calc(100vh - 100px)'}}>
             <CardHeader title="Pendientes" />
             <NewTask />
-            <TaskContainer status="pending" />
+            <TaskContainer px="219px" status="pending" />
           </Card>
         </Grid>
-        <Grid item sm={3} xs={12}>
+        <Grid item md={3} sm={6} xs={12}>
           <Card sx={{height: 'calc(100vh - 100px)'}}>
             <CardHeader title="En progreso" />
-            <TaskContainer status="in-progress" />
+            <TaskContainer px="166px" status="in-progress" />
           </Card>
         </Grid>
-        <Grid item sm={3} xs={12}>
+        <Grid item md={3} sm={6} xs={12}>
           <Card sx={{height: 'calc(100vh - 100px)'}}>
             <CardHeader title="Terminadas" />
-            <TaskContainer status="finished" />
+            <TaskContainer px="166px" status="finished" />
           </Card>
+        </Grid>
+        <Grid item md={3} sm={6} xs={12}>
+          <Stack
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+            sx={{height: 'calc(100vh - 100px)'}}
+          >
+            <Card>
+              <Pomodoro />
+            </Card>
+            <Card>
+              <Trash />
+            </Card>
+          </Stack>
         </Grid>
       </Grid>
     </Layout>
