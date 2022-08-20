@@ -22,7 +22,7 @@ const connect = async () => {
     await mongoose.disconnect()
   }
 
-  await mongoose.connect(process.env.MONGO_URI as string)
+  await mongoose.connect(process.env.MONGODB_URI as string)
 
   mongoConnection.isConnected = 1
 
