@@ -49,7 +49,7 @@ const CountDown = () => {
       <Box paddingTop={1}>
         <Box sx={{maxWidth: 200, margin: '0 auto'}}>
           <CircularProgressbarWithChildren
-            strokeWidth={2}
+            strokeWidth={3}
             styles={buildStyles({
               pathColor:
                 mode === 'work'
@@ -57,7 +57,7 @@ const CountDown = () => {
                   : mode === 'shortBreak'
                   ? lightGreenColor
                   : lightBlueColor,
-              trailColor: '#FFFFFF',
+              trailColor: '#121212',
               textColor: '#FFFFFF',
             })}
             text={minutes + ':' + seconds}

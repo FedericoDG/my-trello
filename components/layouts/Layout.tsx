@@ -1,4 +1,4 @@
-import {Box} from '@mui/material'
+import {Box, Container} from '@mui/material'
 import {FC, ReactNode} from 'react'
 import Head from 'next/head'
 
@@ -17,7 +17,9 @@ const Layout: FC<Props> = ({children, title = 'My Trello'}) => {
       </Head>
       <Navbar />
       <Sidebar />
-      <Box sx={{paddingY: 1, paddingX: 2}}>{children}</Box>
+      <Container maxWidth="xl" sx={{paddingY: 1, paddingX: 2}}>
+        {children}
+      </Container>
     </Box>
   )
 }
