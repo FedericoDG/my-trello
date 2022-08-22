@@ -1,4 +1,4 @@
-import {Box, FormControlLabel, FormGroup, Link, Switch, Grid} from '@mui/material'
+import {FormControlLabel, FormGroup, Link, Switch} from '@mui/material'
 import {useDispatch} from 'react-redux'
 import AppBar from '@mui/material/AppBar'
 import IconButton from '@mui/material/IconButton'
@@ -26,32 +26,27 @@ const Navbar = () => {
   return (
     <AppBar color="primary" position="sticky">
       <Toolbar>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Grid item sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <IconButton edge="start" size="large" onClick={toggle}>
-              <MenuIcon sx={{color: '#ffffff'}} />
-            </IconButton>
-            <NextLink passHref href="/">
-              <Link color="white" underline="none">
-                <Typography variant="h6">MyTrello</Typography>
-              </Link>
-            </NextLink>
-          </Grid>
-          <Grid item>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={isDarkTheme}
-                    color={isDarkTheme ? 'primary' : 'secondary'}
-                    onChange={handleChange}
-                  />
-                }
-                label="Dark"
+        <IconButton edge="start" size="large" onClick={toggle}>
+          <MenuIcon sx={{color: '#ffffff'}} />
+        </IconButton>
+        <NextLink passHref href="/">
+          <Link color="white" underline="none">
+            <Typography variant="h6">MyTrello</Typography>
+          </Link>
+        </NextLink>
+        <div style={{flex: 1}} />
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={isDarkTheme}
+                color={isDarkTheme ? 'primary' : 'secondary'}
+                onChange={handleChange}
               />
-            </FormGroup>
-          </Grid>
-        </Grid>
+            }
+            label="Modo Oscuro"
+          />
+        </FormGroup>
       </Toolbar>
     </AppBar>
   )
