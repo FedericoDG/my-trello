@@ -26,7 +26,7 @@ const getTasks = async (res: NextApiResponse<Data>) => {
     res.status(200).json(tasks)
   } catch (error) {
     await disconnect()
-    res.status(500).json({message: 'Server error.'})
+    res.status(500).json({message: `Server error: ${error}`})
   }
 }
 
