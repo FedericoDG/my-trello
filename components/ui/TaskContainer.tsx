@@ -1,5 +1,5 @@
 import {FC, DragEvent} from 'react'
-import {List, Paper} from '@mui/material'
+import {List, Paper, useTheme} from '@mui/material'
 import {useSelector, useDispatch} from 'react-redux'
 
 import {AppDispatch, RootState} from '../../redux/store'
@@ -16,6 +16,9 @@ interface Props {
 }
 
 const TaskContainer: FC<Props> = ({status, px = '250px'}) => {
+  const {palette} = useTheme()
+  const {mode: theme} = palette
+
   const dispatch = useDispatch<AppDispatch>()
   const {tasks} = useSelector((state: RootState) => state.tasks)
   const {draggingTask} = useSelector((state: RootState) => state.ui)
@@ -38,6 +41,7 @@ const TaskContainer: FC<Props> = ({status, px = '250px'}) => {
   return (
     <div className={draggingTask ? style.dragging : ''} onDragOver={allowDrop} onDrop={onDrop}>
       <Paper
+        elevation={theme === 'light' ? 0 : 1}
         sx={{
           height: `calc(100vh - ${px})`,
           overflowY: 'auto',
