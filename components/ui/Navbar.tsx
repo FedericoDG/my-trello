@@ -15,7 +15,6 @@ import shareThemeInfo from '../../services/theme-info'
 
 const Navbar = () => {
   const [theme, setTheme] = useState('light')
-  console.log(theme)
 
   useEffect(() => {
     const cookieTheme = Cookies.get('theme') || 'light'

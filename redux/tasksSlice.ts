@@ -10,7 +10,7 @@ export interface Tasks {
 const initialState: Tasks = {
   tasks: [],
 }
-
+/* 
 export const loadTasks = createAsyncThunk('tasks/load', async () => {
   try {
     const {data} = await tasksApi.get<Task[]>('/tasks')
@@ -19,7 +19,7 @@ export const loadTasks = createAsyncThunk('tasks/load', async () => {
   } catch (error) {
     throw new Error('error')
   }
-})
+}) */
 
 export const postTask = (description: string) => async (dispatch: Dispatch) => {
   try {
@@ -34,6 +34,7 @@ export const postTask = (description: string) => async (dispatch: Dispatch) => {
 export const putTask = (task: Task) => async (dispatch: Dispatch) => {
   try {
     const {data} = await tasksApi.put<Task>(`/tasks/${task._id}`, task)
+    console.log('EDITADO: ', data)
 
     dispatch(updateTask(data))
   } catch (error) {
@@ -82,12 +83,12 @@ export const tasksSlice = createSlice({
       tasks: state.tasks.filter((task) => task._id !== action.payload),
     }),
   },
-  extraReducers: (builder) => {
+  /*  extraReducers: (builder) => {
     builder.addCase(loadTasks.fulfilled, (state, action) => ({
       ...state,
       tasks: action.payload,
     }))
-  },
+  }, */
 })
 
 export const {addTask, addTasks, removeTask, updateTask} = tasksSlice.actions

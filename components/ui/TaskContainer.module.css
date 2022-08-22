@@ -15,3 +15,12 @@
   border-radius: 0.5rem;
   border: 1px dashed rgb(209, 55, 55);
 }
+
+.dragging_light {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  border: 1px dashed #5c5c5c;
+}

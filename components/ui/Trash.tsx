@@ -39,6 +39,7 @@ const Trash = () => {
       onDrop={onDrop}
     >
       <Paper
+        elevation={theme === 'light' ? 0 : 1}
         sx={{
           backgroundColor: 'transparent',
           paddingX: 1,

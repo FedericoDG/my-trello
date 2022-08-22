@@ -39,7 +39,11 @@ const TaskContainer: FC<Props> = ({status, px = '250px'}) => {
   }
 
   return (
-    <div className={draggingTask ? style.dragging : ''} onDragOver={allowDrop} onDrop={onDrop}>
+    <div
+      className={draggingTask ? (theme === 'dark' ? style.dragging : style.dragging_light) : ''}
+      onDragOver={allowDrop}
+      onDrop={onDrop}
+    >
       <Paper
         elevation={theme === 'light' ? 0 : 1}
         sx={{
