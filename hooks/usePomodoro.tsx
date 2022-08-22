@@ -1,4 +1,5 @@
 import {useState, useRef, useCallback, useEffect} from 'react'
+import fireworksConfetti from '../utils/confetti'
 
 type Mode = 'work' | 'shortBreak' | 'longBreak'
 
@@ -39,6 +40,7 @@ const usePomodoro = ({
         return 'work'
       }
       if (mode === 'work' && shortBreaksCounter === 4) {
+        fireworksConfetti()
         return 'longBreak'
       }
 
