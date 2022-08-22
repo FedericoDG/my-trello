@@ -7,20 +7,36 @@ import NextLink from 'next/link'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
+import Cookies from 'js-cookie'
+import {AppDispatch} from '../../redux/store'
+import {ChangeEvent, useState, useEffect} from 'react'
 import {toggleSidebar} from '../../redux/uiSlice'
 import shareThemeInfo from '../../services/theme-info'
-import {ChangeEvent, useState} from 'react'
 
 const Navbar = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(true)
+  const [theme, setTheme] = useState('light')
+  console.log(theme)
 
-  const dispatch = useDispatch()
+  useEffect(() => {
+    const cookieTheme = Cookies.get('theme') || 'light'
+    const selectedTheme = cookieTheme === 'light' ? 'light' : 'dark'
+    setTheme(selectedTheme)
+  }, [])
+
+  const dispatch = useDispatch<AppDispatch>()
 
   const toggle = () => dispatch(toggleSidebar())
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsDarkTheme(event.target.checked)
-    shareThemeInfo.setSubject(event.target.checked)
+    if (event.target.checked) {
+      setTheme('dark')
+      Cookies.set('theme', 'dark', {sameSite: 'strict'})
+      shareThemeInfo.setSubject('dark')
+    } else {
+      setTheme('light')
+      Cookies.set('theme', 'light', {sameSite: 'strict'})
+      shareThemeInfo.setSubject('light')
+    }
   }
 
   return (
@@ -39,8 +55,8 @@ const Navbar = () => {
           <FormControlLabel
             control={
               <Switch
-                checked={isDarkTheme}
-                color={isDarkTheme ? 'primary' : 'secondary'}
+                checked={theme === 'dark'}
+                color={theme === 'dark' ? 'primary' : 'secondary'}
                 onChange={handleChange}
               />
             }

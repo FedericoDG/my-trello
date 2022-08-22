@@ -1,4 +1,4 @@
-import {Card, Grid, CardHeader, Box, Stack} from '@mui/material'
+import {Card, Grid, CardHeader, Stack} from '@mui/material'
 import {useDispatch} from 'react-redux'
 import {useEffect} from 'react'
 import type {NextPage} from 'next'
@@ -6,9 +6,9 @@ import type {NextPage} from 'next'
 import {AppDispatch} from '../redux/store'
 import {Layout} from '../components/layouts'
 import {loadTasks} from '../redux/tasksSlice'
+import {Pomodoro} from '../components/pomodoro'
 import NewTask from '../components/ui/NewTask'
 import TaskContainer from '../components/ui/TaskContainer'
-import {Pomodoro} from '../components/pomodoro'
 import Trash from '../components/ui/Trash'
 
 const HomePage: NextPage = () => {

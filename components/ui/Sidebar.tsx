@@ -14,7 +14,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '../../redux/store'
 import {toggleSidebar} from '../../redux/uiSlice'
 
-const menuItems: string[] = ['uno', 'dos', 'tres']
+const menuItems: string[] = ['por ahora nada', 'se vienen cositas']
 
 const Sidebar = () => {
   const {sidebarOpen} = useSelector((state: RootState) => state.ui)
@@ -25,7 +25,7 @@ const Sidebar = () => {
 
   return (
     <Drawer anchor="left" open={sidebarOpen} onClose={toggle}>
-      <Box sx={{width: 150}}>
+      <Box sx={{width: 250}}>
         <Box sx={{paddingY: 1, paddingX: 2}}>
           <Typography textAlign="center" variant="h5">
             Menu
@@ -42,16 +42,6 @@ const Sidebar = () => {
           ))}
         </List>
         <Divider />
-        <List>
-          {menuItems.map((text, index) => (
-            <ListItem key={text} button>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText>{text}</ListItemText>
-            </ListItem>
-          ))}
-        </List>
       </Box>
     </Drawer>
   )

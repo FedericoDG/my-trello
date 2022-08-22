@@ -2,7 +2,6 @@ import {Box, Button, TextField} from '@mui/material'
 import {useDispatch, useSelector} from 'react-redux'
 import {ChangeEvent, useState} from 'react'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
-import CancelIcon from '@mui/icons-material/Cancel'
 import SaveIcon from '@mui/icons-material/Save'
 
 import {AppDispatch, RootState} from '../../redux/store'
@@ -51,11 +50,7 @@ const NewTask = () => {
             onChange={handleChange}
           />
           <Box display="flex" justifyContent="space-between">
-            <Button
-              color="error"
-              /* endIcon={<CancelIcon />}  */ variant="text"
-              onClick={handleCancel}
-            >
+            <Button color="error" variant="text" onClick={handleCancel}>
               Cancelar
             </Button>
             <Button endIcon={<SaveIcon />} variant="outlined" onClick={handleSubmit}>
