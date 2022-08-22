@@ -1,5 +1,5 @@
 import {buildStyles, CircularProgressbarWithChildren} from 'react-circular-progressbar'
-import {Box, Typography, ButtonGroup, IconButton, Button} from '@mui/material'
+import {Box, Typography, ButtonGroup, IconButton, Button, useTheme} from '@mui/material'
 import {useContext} from 'react'
 import {lightBlue, lightGreen, red} from '@mui/material/colors'
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined'
@@ -16,6 +16,8 @@ const lightGreenColor = lightGreen.A700
 const lightBlueColor = lightBlue.A200
 
 const CountDown = () => {
+  const {palette} = useTheme()
+  const {mode: theme} = palette
   const {
     work,
     shortBreak,
@@ -57,8 +59,8 @@ const CountDown = () => {
                   : mode === 'shortBreak'
                   ? lightGreenColor
                   : lightBlueColor,
-              trailColor: '#121212',
-              textColor: '#FFFFFF',
+              trailColor: theme === 'dark' ? '#212121' : '#eeeeee',
+              textColor: theme === 'dark' ? '#ffffff' : '#212121',
             })}
             text={minutes + ':' + seconds}
             value={percentage}

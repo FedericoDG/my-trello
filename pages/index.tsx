@@ -22,22 +22,22 @@ const HomePage: NextPage = () => {
     <Layout title="My Trello">
       <Grid container spacing={2}>
         <Grid item md={3} sm={6} xs={12}>
-          <Card sx={{height: 'calc(100vh - 100px)'}}>
+          <Card sx={{height: 'calc(100vh - 100px)', padding: '0 8px'}}>
             <CardHeader title="Pendientes" />
             <NewTask />
-            <TaskContainer px="219px" status="pending" />
+            <TaskContainer px="227px" status="pending" />
           </Card>
         </Grid>
         <Grid item md={3} sm={6} xs={12}>
-          <Card sx={{height: 'calc(100vh - 100px)'}}>
+          <Card sx={{height: 'calc(100vh - 100px)', padding: '0 8px'}}>
             <CardHeader title="En progreso" />
-            <TaskContainer px="166px" status="in-progress" />
+            <TaskContainer px="174px" status="in-progress" />
           </Card>
         </Grid>
         <Grid item md={3} sm={6} xs={12}>
-          <Card sx={{height: 'calc(100vh - 100px)'}}>
+          <Card sx={{height: 'calc(100vh - 100px)', padding: '0 8px'}}>
             <CardHeader title="Terminadas" />
-            <TaskContainer px="166px" status="finished" />
+            <TaskContainer px="174px" status="finished" />
           </Card>
         </Grid>
         <Grid item md={3} sm={6} xs={12}>

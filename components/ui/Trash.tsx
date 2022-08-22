@@ -1,6 +1,6 @@
 import {DragEvent} from 'react'
 import {grey} from '@mui/material/colors'
-import {Paper, Grid} from '@mui/material'
+import {Paper, Grid, useTheme} from '@mui/material'
 import {useSelector, useDispatch} from 'react-redux'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 
@@ -10,9 +10,13 @@ import {isDraggingTask} from '../../redux/uiSlice'
 
 import style from './TaskContainer.module.css'
 
+const greyColorLight = grey['200']
 const greyColor = grey['900']
 
 const Trash = () => {
+  const {palette} = useTheme()
+  const {mode: theme} = palette
+
   const {draggingTask} = useSelector((state: RootState) => state.ui)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -41,7 +45,9 @@ const Trash = () => {
         }}
       >
         <Grid container alignItems="center" justifyContent="center" sx={{height: '100px'}}>
-          <DeleteForeverIcon sx={{fontSize: 80, color: greyColor}} />
+          <DeleteForeverIcon
+            sx={{fontSize: 80, color: theme === 'dark' ? greyColor : greyColorLight}}
+          />
         </Grid>
       </Paper>
     </div>
