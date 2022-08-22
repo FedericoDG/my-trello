@@ -17,7 +17,7 @@ export const loadTasks = createAsyncThunk('tasks/load', async () => {
 
     return data
   } catch (error) {
-    throw new Error('error', error)
+    throw new Error(`error: ${error}`)
   }
 })
 
