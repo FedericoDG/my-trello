@@ -59,6 +59,10 @@ export const tasksSlice = createSlice({
       ...state,
       tasks: [...state.tasks, action.payload],
     }),
+    addTasks: (state, action: PayloadAction<Task[]>) => ({
+      ...state,
+      tasks: [...action.payload],
+    }),
     updateTask: (state, action: PayloadAction<Task>) => ({
       ...state,
       tasks: state.tasks.map((task) => {
@@ -86,6 +90,6 @@ export const tasksSlice = createSlice({
   },
 })
 
-export const {addTask, removeTask, updateTask} = tasksSlice.actions
+export const {addTask, addTasks, removeTask, updateTask} = tasksSlice.actions
 
 export default tasksSlice.reducer

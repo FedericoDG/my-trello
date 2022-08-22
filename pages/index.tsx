@@ -1,22 +1,30 @@
 import {Card, Grid, CardHeader, Stack} from '@mui/material'
+import {GetServerSideProps} from 'next'
 import {useDispatch} from 'react-redux'
 import {useEffect} from 'react'
 import type {NextPage} from 'next'
 
 import {AppDispatch} from '../redux/store'
 import {Layout} from '../components/layouts'
-import {loadTasks} from '../redux/tasksSlice'
+import {addTask, addTasks, loadTasks} from '../redux/tasksSlice'
 import {Pomodoro} from '../components/pomodoro'
+import {tasksApi} from '../services'
 import NewTask from '../components/ui/NewTask'
+import Task from '../interfaces/task'
 import TaskContainer from '../components/ui/TaskContainer'
 import Trash from '../components/ui/Trash'
+import {getTasks} from '../database/dbTasks'
 
-const HomePage: NextPage = () => {
+interface Props {
+  tasks: Task[]
+}
+
+const HomePage: NextPage<Props> = ({tasks}) => {
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
-    dispatch(loadTasks())
-  }, [dispatch])
+    dispatch(addTasks(tasks))
+  }, [])
 
   return (
     <Layout title="My Trello">
@@ -58,6 +66,24 @@ const HomePage: NextPage = () => {
       </Grid>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const tasks = await getTasks()
+
+  if (!tasks) {
+    return {
+      props: {
+        tasks: [],
+      },
+    }
+  }
+
+  return {
+    props: {
+      tasks,
+    },
+  }
 }
 
 export default HomePage

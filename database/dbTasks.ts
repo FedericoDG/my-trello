@@ -17,4 +17,15 @@ const getTaskById = async (id: string): Promise<ITask | null> => {
   return JSON.parse(JSON.stringify(task))
 }
 
+export const getTasks = async (): Promise<ITask | null> => {
+  if (!isValidObjectId) return null
+
+  await connect()
+  const tasks = await Task.find().lean()
+
+  await disconnect()
+
+  return JSON.parse(JSON.stringify(tasks))
+}
+
 export default getTaskById
