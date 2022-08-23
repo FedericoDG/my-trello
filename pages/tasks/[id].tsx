@@ -53,7 +53,7 @@ const TaskPage: NextPage<Props> = ({task}) => {
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) =>
     setStatusValue(e.target.value as TaskStatus)
 
-  const handleOnSave = () => {
+  const handleOnSave = async () => {
     const updatedTask = {
       ...task,
       description: inputValue,
