@@ -60,7 +60,7 @@ const TaskPage: NextPage<Props> = ({task}) => {
       status: statusValue,
     }
 
-    dispatch(putTask(updatedTask))
+    await dispatch(putTask(updatedTask))
 
     enqueueSnackbar('Tarea actualizada', {
       variant: 'success',
