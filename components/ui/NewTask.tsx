@@ -1,6 +1,6 @@
 import {Box, Button, TextField} from '@mui/material'
 import {useDispatch, useSelector} from 'react-redux'
-import {ChangeEvent, useState} from 'react'
+import {ChangeEvent, MouseEvent, useState} from 'react'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import SaveIcon from '@mui/icons-material/Save'
 
@@ -18,7 +18,8 @@ const NewTask = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => setinputValue(e.target.value)
 
-  const handleCancel = () => {
+  const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     setTouched(false)
     dispatch(isAddingTask(false))
     setinputValue('')

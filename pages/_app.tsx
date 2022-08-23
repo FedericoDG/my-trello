@@ -12,12 +12,12 @@ import shareThemeInfo from '../services/theme-info'
 import '../styles/globals.css'
 
 const MyApp = ({Component, pageProps}: AppProps) => {
-  const [currentTheme, setCurrentTheme] = useState(lightTheme)
+  const [currentTheme, setCurrentTheme] = useState(darkTheme)
 
   const subScription$ = shareThemeInfo.getSubject()
 
   useEffect(() => {
-    const cookieTheme = Cookies.get('theme') || 'light'
+    const cookieTheme = Cookies.get('theme') || 'dark'
     const selectedTheme = cookieTheme === 'light' ? lightTheme : darkTheme
     setCurrentTheme(selectedTheme)
   }, [])
