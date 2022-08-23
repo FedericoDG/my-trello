@@ -13,6 +13,7 @@ import Task from '../interfaces/task'
 import TaskContainer from '../components/ui/TaskContainer'
 import Trash from '../components/ui/Trash'
 import {getTasks} from '../database/dbTasks'
+import Footer from '../components/ui/Footer'
 
 interface Props {
   tasks: Task[]
@@ -57,9 +58,11 @@ const HomePage: NextPage<Props> = ({tasks}) => {
             <Card>
               <Pomodoro />
             </Card>
-            <Card>
+            <div style={{flex: 1}}></div>
+            <Card sx={{marginBottom: 1}}>
               <Trash />
             </Card>
+            <Footer />
           </Stack>
         </Grid>
       </Grid>
