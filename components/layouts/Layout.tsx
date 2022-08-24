@@ -3,6 +3,7 @@ import {FC, ReactNode} from 'react'
 import Head from 'next/head'
 
 import {Navbar, Sidebar} from '../ui'
+import Footer from '../ui/Footer'
 
 interface Props {
   children: ReactNode
@@ -20,6 +21,7 @@ const Layout: FC<Props> = ({children, title = 'My Trello'}) => {
       <Container maxWidth="xl" sx={{paddingY: 1, paddingX: 2}}>
         {children}
       </Container>
+      <Footer />
     </Box>
   )
 }

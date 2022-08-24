@@ -20,7 +20,13 @@ const Footer = () => {
         paddingX: 1,
       }}
     >
-      <Grid container alignItems="center" justifyContent="space-evenly">
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="space-evenly"
+        maxWidth={360}
+        marginX="auto"
+      >
         <a
           href="https://github.com/federicodg"
           target="_blank"

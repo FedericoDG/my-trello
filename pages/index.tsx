@@ -13,7 +13,6 @@ import Task from '../interfaces/task'
 import TaskContainer from '../components/ui/TaskContainer'
 import Trash from '../components/ui/Trash'
 import {getTasks} from '../database/dbTasks'
-import Footer from '../components/ui/Footer'
 
 interface Props {
   tasks: Task[]
@@ -30,22 +29,22 @@ const HomePage: NextPage<Props> = ({tasks}) => {
     <Layout title="My Trello">
       <Grid container spacing={2}>
         <Grid item md={3} sm={6} xs={12}>
-          <Card sx={{height: 'calc(100vh - 100px)', padding: '0 8px'}}>
+          <Card sx={{height: 'calc(100vh - 110px)', padding: '0 8px'}}>
             <CardHeader title="Pendientes" />
             <NewTask />
-            <TaskContainer px="227px" status="pending" />
+            <TaskContainer px="235px" status="pending" />
           </Card>
         </Grid>
         <Grid item md={3} sm={6} xs={12}>
-          <Card sx={{height: 'calc(100vh - 100px)', padding: '0 8px'}}>
+          <Card sx={{height: 'calc(100vh - 110px)', padding: '0 8px'}}>
             <CardHeader title="En progreso" />
-            <TaskContainer px="174px" status="in-progress" />
+            <TaskContainer px="182px" status="in-progress" />
           </Card>
         </Grid>
         <Grid item md={3} sm={6} xs={12}>
-          <Card sx={{height: 'calc(100vh - 100px)', padding: '0 8px'}}>
+          <Card sx={{height: 'calc(100vh - 110px)', padding: '0 8px'}}>
             <CardHeader title="Terminadas" />
-            <TaskContainer px="174px" status="finished" />
+            <TaskContainer px="182px" status="finished" />
           </Card>
         </Grid>
         <Grid item md={3} sm={6} xs={12}>
@@ -53,16 +52,15 @@ const HomePage: NextPage<Props> = ({tasks}) => {
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
-            sx={{height: 'calc(100vh - 100px)'}}
+            sx={{height: 'calc(100vh - 110px)'}}
           >
             <Card>
               <Pomodoro />
             </Card>
             <div style={{flex: 1}}></div>
-            <Card sx={{marginBottom: 1}}>
+            <Card>
               <Trash />
             </Card>
-            <Footer />
           </Stack>
         </Grid>
       </Grid>
