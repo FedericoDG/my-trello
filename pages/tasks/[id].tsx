@@ -22,7 +22,7 @@ import {useRouter} from 'next/router'
 import {useSnackbar} from 'notistack'
 
 import {AppDispatch} from '../../redux/store'
-import {Layout} from '../../components/layouts'
+import {LayoutWithoutFooter} from '../../components/layouts'
 import {putTask} from '../../redux/tasksSlice'
 import getFormatDistanceToNow from '../../utils/date'
 import getTaskById from '../../database/dbTasks'
@@ -74,7 +74,7 @@ const TaskPage: NextPage<Props> = ({task}) => {
   }
 
   return (
-    <Layout title={`${inputValue.substring(0, 20)}...`}>
+    <LayoutWithoutFooter title={`${inputValue.substring(0, 20)}...`}>
       <Grid container justifyContent="center" sx={{marginTop: 2}}>
         <Grid item md={6} sm={8} xs={12}>
           <Card>
@@ -124,7 +124,7 @@ const TaskPage: NextPage<Props> = ({task}) => {
           </Card>
         </Grid>
       </Grid>
-    </Layout>
+    </LayoutWithoutFooter>
   )
 }
 
