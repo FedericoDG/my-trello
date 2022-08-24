@@ -10,6 +10,8 @@ interface Props {
   title?: string
 }
 
+const origin = typeof window !== 'undefined' ? window.location.origin : ''
+
 const Layout: FC<Props> = ({children, title = 'My Trello'}) => {
   return (
     <Box sx={{flexFlow: 1}}>
