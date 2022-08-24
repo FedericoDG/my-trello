@@ -14,6 +14,9 @@ const Layout: FC<Props> = ({children, title = 'My Trello'}) => {
   return (
     <Box sx={{flexFlow: 1}}>
       <Head>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={title} />
+        <meta property="og:image" content={`${origin}/static/mytrello.jpg`} />
         <title>{title}</title>
       </Head>
       <Navbar />
